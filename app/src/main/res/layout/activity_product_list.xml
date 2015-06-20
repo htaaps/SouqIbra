@@ -1,8 +1,15 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/apl_bt_sell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sell"/>
 
     <ListView
         android:id="@+id/list"
@@ -11,5 +18,4 @@
         android:divider="@color/list_divider"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_row_selector" />
-
-</RelativeLayout>
+</LinearLayout>

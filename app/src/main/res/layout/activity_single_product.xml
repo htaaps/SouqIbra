@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_row_selector"
-    android:padding="8dp" >
+    android:padding="8dp"
+    android:orientation="vertical">
 
     <!-- Thumbnail Image -->
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/si_p_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"
+        android:layout_gravity="center"/>
 
     <!-- Product Name -->
     <TextView
@@ -43,4 +45,34 @@
         android:textColor="@color/year"
         android:textSize="@dimen/year" />
 
-</RelativeLayout>
+
+    <!-- Product Price -->
+    <TextView
+        android:id="@+id/si_seller_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/title"
+        android:textStyle="bold"
+        android:text="@string/seller"/>
+    <!-- Product Price -->
+    <TextView
+        android:id="@+id/si_c_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/title"
+        android:textStyle="bold" />
+
+    <!-- Product Price -->
+    <TextView
+        android:id="@+id/si_c_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/title"
+        android:textStyle="bold" />
+
+</LinearLayout>

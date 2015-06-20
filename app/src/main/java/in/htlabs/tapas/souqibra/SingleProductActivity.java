@@ -15,7 +15,7 @@ import in.htlabs.tapas.souqibra.app.AppController;
  */
 public class SingleProductActivity extends Activity {
 
-    String p_name,p_details,p_price,p_image;
+    String p_name,p_details,p_price,p_image,c_name,c_phone;
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
     @Override
@@ -26,6 +26,10 @@ public class SingleProductActivity extends Activity {
 
         Intent i = getIntent();
         // Get the result of rank
+        c_name = i.getStringExtra("c_name");
+        // Get the result of country
+        c_phone = i.getStringExtra("c_phone");
+        // Get the result of population
         p_name = i.getStringExtra("p_name");
         // Get the result of country
         p_details = i.getStringExtra("p_details");
@@ -41,12 +45,16 @@ public class SingleProductActivity extends Activity {
         TextView txtname = (TextView) findViewById(R.id.si_p_name);
         TextView txtdetails = (TextView) findViewById(R.id.si_p_details);
         TextView txtprice = (TextView) findViewById(R.id.si_p_price);
+        TextView txtcname = (TextView) findViewById(R.id.si_c_name);
+        TextView txtcphone = (TextView) findViewById(R.id.si_c_phone);
         NetworkImageView ivpic=(NetworkImageView)findViewById(R.id.si_p_image);
 
         // Set results to the TextViews
         txtname.setText(p_name);
         txtdetails.setText(p_details);
         txtprice.setText(p_price);
+        txtcname.setText(c_name);
+        txtcphone.setText(c_phone);
         ivpic.setImageUrl(p_image,imageLoader);
     }
 }

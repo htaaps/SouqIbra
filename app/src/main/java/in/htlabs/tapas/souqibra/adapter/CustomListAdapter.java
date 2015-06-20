@@ -14,6 +14,7 @@ import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.List;
 
+import in.htlabs.tapas.souqibra.MainActivity;
 import in.htlabs.tapas.souqibra.R;
 import in.htlabs.tapas.souqibra.SingleProductActivity;
 import in.htlabs.tapas.souqibra.app.AppController;
@@ -87,6 +88,10 @@ public class CustomListAdapter extends BaseAdapter {
 				p = productItems.get(position);
 				Intent intent = new Intent(activity, SingleProductActivity.class);
 				// Pass all data rank
+				intent.putExtra("c_name", p.getCName());
+				// Pass all data country
+				intent.putExtra("c_phone", p.getCPhone());
+				// Pass all data country
 				intent.putExtra("p_name", p.getPName());
 				// Pass all data country
 				intent.putExtra("p_details", p.getPDetails());

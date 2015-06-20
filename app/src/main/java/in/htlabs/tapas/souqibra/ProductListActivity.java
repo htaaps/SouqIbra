@@ -2,8 +2,11 @@ package in.htlabs.tapas.souqibra;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.android.volley.Response;
@@ -25,25 +28,32 @@ import in.htlabs.tapas.souqibra.model.Product;
 /**
  * Created by Tapas on 5/31/2015.
  */
-public class ProductListActivity extends Activity {
+public class ProductListActivity extends Activity implements View.OnClickListener{
 
     // Log tag
     private static final String TAG = MainActivity.class.getSimpleName();
 
     // Movies json url
-    private static final String url = "http://www.htlabs.in/student/ibrasouq/getallproducts.php";
+    private static String url = null;
     private ProgressDialog pDialog;
     private List<Product> productList = new ArrayList<Product>();
     private ListView listView;
     private CustomListAdapter adapter;
-
+    Button apl_btn_sell;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
         listView = (ListView) findViewById(R.id.list);
+
+        apl_btn_sell=(Button)findViewById(R.id.apl_bt_sell);
+        apl_btn_sell.setOnClickListener(this);
+
         adapter = new CustomListAdapter(this, productList);
+
+        url = "http://www.htlabs.in/student/ibrasouq/getproducts.php"+"?category_id="+MainActivity.selection;
+
         listView.setAdapter(adapter);
 
         pDialog = new ProgressDialog(this);
@@ -68,6 +78,9 @@ public class ProductListActivity extends Activity {
 
                             JSONObject pro = pArray.getJSONObject(j);
                             Product item = new Product();
+                            item.setPId(pro.getString("p_id"));
+                            item.setCName(pro.getString("c_name"));
+                            item.setCPhone(pro.getString("c_phone"));
                             item.setPName(pro.getString("p_name"));
                             item.setPImageUrl(pro.getString("p_image"));
                             item.setPDetails(pro.getString("p_details"));
@@ -94,6 +107,16 @@ public class ProductListActivity extends Activity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(prodReq);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.apl_bt_sell:
+                Intent i=new Intent(ProductListActivity.this,LoginActivity.class);
+                startActivity(i);
+                break;
+        }
     }
 
     @Override
